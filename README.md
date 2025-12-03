@@ -4,6 +4,7 @@
 > Turn chaotic output into clean, timestamped, professional case evidence.
 ---
 
+
 ## ⭐ What It Does
 
 - Automatically organizes pentest evidence
@@ -16,6 +17,7 @@
 - Works with any CLI tool
 - Keeps all evidence **local** (good OPSEC)
 ---
+
 
 ## 🚀 Quickstart
 
@@ -44,6 +46,7 @@ evidence/
 ```md
 ---
 
+
 ## 🧩 Why This Matters
 
 Pentesters often end up with:
@@ -51,6 +54,7 @@ Pentesters often end up with:
 - Random terminal outputs  
 - Screenshots everywhere  
 - Notes scattered around  
+
 
 📌 This tool solves that with **automated case organization**.
 
@@ -60,6 +64,7 @@ Use it for:
 - CTFs
 - Incident response
 ---
+
 
 ## 🛣️ Roadmap
 
@@ -74,12 +79,14 @@ Use it for:
 | Hash + sign for chain-of-custody | 🔜 |
 ---
 
+
 ## 📦 Requirements
 
 - Python 3.8+
 
 (More installation methods coming soon)
 ---
+
 
 ## 🔗 Red Specter Offensive Suite
 
@@ -93,11 +100,13 @@ Part of the **Red Specter** ethical cybersecurity ecosystem:
 | 🔒 Evidence Collector | Structured storage & timeline of pentest findings | https://github.com/RichardBarron27/redspecter-evidence-collector |
 ---
 
+
 ## 🧑‍💻 Author
 
 **Richard Barron – Red Specter Founder**  
 AI Partner: **Vigil**
 
 ⭐ If this tool helps you — please consider giving it a star!
+
 
 
