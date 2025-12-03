@@ -1,4 +1,11 @@
 # 🔒 Red Specter Evidence Collector (MVP)
+[![Stars](https://img.shields.io/github/stars/RichardBarron27/redspecter-evidence-collector?style=flat&logo=github)](https://github.com/RichardBarron27/redspecter-evidence-collector/stargazers)
+![Last Commit](https://img.shields.io/github/last-commit/RichardBarron27/redspecter-evidence-collector)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Kali%20-purple)
+![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue)
+
+
 
 > **The pentester's evidence ledger — from chaos to case file.**  
 > Turn chaotic output into clean, timestamped, professional case evidence.
@@ -107,6 +114,7 @@ Part of the **Red Specter** ethical cybersecurity ecosystem:
 AI Partner: **Vigil**
 
 ⭐ If this tool helps you — please consider giving it a star!
+
 
 
 
