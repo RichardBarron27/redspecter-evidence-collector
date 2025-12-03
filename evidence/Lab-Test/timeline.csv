@@ -1,0 +1,2 @@
+timestamp,project,target,type,file_path,tags,details
+2025-12-03T10:42:05Z,Lab-Test,10.10.10.5,command,2025-12-03/10.10.10.5/command/whoami-2025-12-03T10:42:05Z.txt,initial-access,whoami

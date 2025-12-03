@@ -1,0 +1,14 @@
+# evid command collector
+# timestamp: 2025-12-03T10:42:05Z
+# project: Lab-Test
+# target: 10.10.10.5
+# cmd: whoami
+
+## stdout
+richard
+
+
+## stderr
+(no stderr)
+
+## return code: 0
