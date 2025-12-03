@@ -16,7 +16,6 @@ python3 evid/cli.py collect command \
   --cmd "whoami" \
   --target "10.10.10.5" \
   --tags "initial-access"
-
 ---
 
 ### 🔗 Explore the Red Specter tool suite
