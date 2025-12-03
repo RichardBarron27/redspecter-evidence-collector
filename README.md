@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/RichardBarron27/red-specter-offensive-framework/main/assets/red-specter-logo.png" alt="Red Specter Logo" width="200">
+</p>
+
+<br>
+
 # 🔒 Red Specter Evidence Collector (MVP)
 [![Stars](https://img.shields.io/github/stars/RichardBarron27/redspecter-evidence-collector?style=flat&logo=github)](https://github.com/RichardBarron27/redspecter-evidence-collector/stargazers)
 ![Last Commit](https://img.shields.io/github/last-commit/RichardBarron27/redspecter-evidence-collector)
@@ -131,6 +137,7 @@ If these tools help you, you can support future development:
 - 💼 PayPal: https://paypal.me/richardbarron1747  
 
 Your support helps me keep improving Red Specter and building new tools. Thank you!
+
 
 
 
