@@ -2,6 +2,8 @@ import argparse
 from pathlib import Path
 from datetime import datetime, date
 import csv
+import shlex
+import subprocess
 
 BASE_DIR_NAME = "evidence"
 
@@ -56,9 +58,10 @@ def collect_command(project: str, cmd: str, target: str = "unknown", tags: str =
 
     # Actually run the command
     print(f"[+] Running command: {cmd}")
-    import subprocess
     try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        # Use shlex.split for cross-platform command parsing (no shell=True)
+        cmd_list = shlex.split(cmd)
+        result = subprocess.run(cmd_list, capture_output=True, text=True)
     except Exception as e:
         raise SystemExit(f"[-] Failed to run command: {e}")
 
