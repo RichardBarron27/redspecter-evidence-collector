@@ -17,11 +17,12 @@ def get_base_dir():
     # Evidence folder will live under the current working directory
     return Path.cwd() / BASE_DIR_NAME
 
-def init_project(project_name: str):
+def init_project(project_name: str, quiet: bool = False):
     base = get_base_dir()
     project_dir = base / project_name
     project_dir.mkdir(parents=True, exist_ok=True)
-    print(f"[+] Project directory created or already exists: {project_dir}")
+    if not quiet:
+        print(f"[+] Project directory created or already exists: {project_dir}")
 
     # make sure a timeline file exists
     timeline_path = project_dir / "timeline.csv"
@@ -29,9 +30,11 @@ def init_project(project_name: str):
         with timeline_path.open("w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["timestamp", "project", "target", "type", "file_path", "tags", "details"])
-        print(f"[+] Created timeline: {timeline_path}")
+        if not quiet:
+            print(f"[+] Created timeline: {timeline_path}")
     else:
-        print(f"[i] Timeline already exists: {timeline_path}")
+        if not quiet:
+            print(f"[i] Timeline already exists: {timeline_path}")
 
 def sanitize_filename(s: str, max_len: int = 40) -> str:
     # Turn a command into a safe filename (no spaces, slashes, etc.)
@@ -40,7 +43,7 @@ def sanitize_filename(s: str, max_len: int = 40) -> str:
         safe = safe[:max_len]
     return safe or "command"
 
-def collect_command(project: str, cmd: str, target: str = "unknown", tags: str = "", dry_run: bool = False):
+def collect_command(project: str, cmd: str, target: str = "unknown", tags: str = "", dry_run: bool = False, quiet: bool = False):
     if not project:
         raise SystemExit("[-] --project is required for collect command")
 
@@ -63,7 +66,8 @@ def collect_command(project: str, cmd: str, target: str = "unknown", tags: str =
         return
 
     # Actually run the command
-    print(f"[+] Running command: {cmd}")
+    if not quiet:
+        print(f"[+] Running command: {cmd}")
     try:
         # Use shlex.split for cross-platform command parsing (no shell=True)
         cmd_list = shlex.split(cmd)
@@ -89,6 +93,7 @@ def collect_command(project: str, cmd: str, target: str = "unknown", tags: str =
     with out_file.open("w", encoding="utf-8") as f:
         f.write("\n".join(content))
 
+    # Core data output: always print the saved path
     print(f"[+] Saved evidence to: {out_file}")
 
     # Append to timeline
@@ -104,7 +109,8 @@ def collect_command(project: str, cmd: str, target: str = "unknown", tags: str =
         writer = csv.writer(f)
         writer.writerow([timestamp, project, target, "command", str(rel_path), tags, cmd])
 
-    print(f"[+] Updated timeline: {timeline_path}")
+    if not quiet:
+        print(f"[+] Updated timeline: {timeline_path}")
 
 def main():
     parser = argparse.ArgumentParser(
@@ -116,6 +122,7 @@ def main():
     # evid init --project "Name"
     p_init = subparsers.add_parser("init", help="Initialize a new evidence project")
     p_init.add_argument("--project", required=True, help="Project name, e.g. 'Acme-External-2025'")
+    p_init.add_argument("--quiet", "-q", action="store_true", help="Suppress informational output")
 
     # evid collect ...
     p_collect = subparsers.add_parser("collect", help="Collect evidence")
@@ -130,11 +137,12 @@ def main():
     p_cmd.add_argument("--target", default="unknown", help="Target IP/hostname/context label")
     p_cmd.add_argument("--tags", default="", help="Comma-separated tags, e.g. 'initial-access,linux'")
     p_cmd.add_argument("--dry-run", action="store_true", help="Don't run, just show where output would go")
+    p_cmd.add_argument("--quiet", "-q", action="store_true", help="Suppress informational output (file path always printed)")
 
     args = parser.parse_args()
 
     if args.subcommand == "init":
-        init_project(args.project)
+        init_project(args.project, quiet=args.quiet)
     elif args.subcommand == "collect" and args.collect_type == "command":
         collect_command(
             project=args.project,
@@ -142,6 +150,7 @@ def main():
             target=args.target,
             tags=args.tags,
             dry_run=args.dry_run,
+            quiet=args.quiet,
         )
     else:
         parser.print_help()
